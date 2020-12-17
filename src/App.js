@@ -1,12 +1,15 @@
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Navbar from './components/Navbar/Navbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="app">
-      <h1>MERN Tracker</h1>
-    </div>
+    <Router>
+      <Navbar />
+    </Router>
   );
 }
 
