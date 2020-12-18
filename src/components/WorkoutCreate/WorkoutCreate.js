@@ -80,7 +80,7 @@ export default class WorkoutCreate extends Component {
         console.log(workout);
 
         axios.post('http://localhost:5000/workouts/add', workout)
-            .then(res => console.log(res.data))
+            .then(res => alert(res.data))
             .catch(err => console.error(err))
 
         window.location = "/";
