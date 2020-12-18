@@ -9,7 +9,7 @@ const Workout = props => (
         <td>{props.workout.duration}</td>
         <td>{props.workout.date.substring(0, 10)}</td>
         <td>
-
+            <a href="#" onClick={() => props.deleteWorkout(props.workout._id)}>Delete</a>
         </td>
     </tr>
 )
@@ -18,6 +18,8 @@ export default class WorkoutList extends Component {
 
     constructor(props) {
         super(props);
+
+        this.deleteWorkout = this.deleteWorkout.bind(this);
 
         this.state = { workouts: [] }
     }
@@ -32,6 +34,16 @@ export default class WorkoutList extends Component {
                 }
             })
             .catch(err => console.error(err))
+    }
+
+    deleteWorkout(id) {
+        axios.delete('http://localhost:5000/workouts/' + id)
+            .then(res => console.log(res.data))
+            .catch(err => console.error(err))
+
+        this.setState({
+            workouts: this.state.workouts.filter(el => el._id !== id)
+        })
     }
 
     workoutList() {
